@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 import random
-
+import string
 
 def index(request):
 	response = HttpResponse()
@@ -17,7 +17,8 @@ def makeColor(request):
 		r = random.randint(0,255)
 		g = random.randint(0,255)
 		b = random.randint(0,255)
-		htmlCode = htmlCode + "<div style='width:50; height: 50; float:left; border-radius:100%; background-color:rgb(" + r +"," + g +"," + b +")'></div>"
+		bcolor = "<div style='width:50; height: 50; float:left; border-radius:100px; background-color:rgb(%d, %d, %d)'></div>" % (r,g,b)
+		htmlCode =  htmlCode + bcolor
 		count = count + 1
 
 	respon.write(htmlCode)
